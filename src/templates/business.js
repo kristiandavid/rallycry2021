@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 
+// TODO : Add Twitter img meta tag
+
 const BusinessPostTemplate = ({
   description,
   tags,
@@ -120,34 +122,33 @@ const BusinessPost = ({ data }) => {
   return (
     <Layout>
       <BusinessPostTemplate
-        content={post.html}
-        description={post.frontmatter.description}
+        content="TODO content"
+        description="TODO description"
         helmet={
           <Helmet titleTemplate="%s | Rally Cry" defer={false}>
-            <title>{`${post.frontmatter.title}`}</title>
+            <title>TODO title</title>
             <meta
               name="description"
-              content={`${post.frontmatter.title} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+              content={`(TODO title) on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
             />
             <meta content="@kristiandavid" name="twitter:creator" />
             <meta content="summary" name="twitter:card" />
-            <meta content={post.frontmatter.title} name="twitter:title" />
-            <meta content={`${post.frontmatter.title} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`} name="twitter:description" />
-            <meta content={post.frontmatter.featuredimage ? post.frontmatter.featuredimage.childImageSharp.fluid.src : "/img/mstile-310x310"} name="twitter:image" />
+            <meta content="TODO content" name="twitter:title" />
+            <meta content={`(TODO title) on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`} name="twitter:description" />
           </Helmet>
         }
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
-        open={post.frontmatter.open}
-        otherContact={post.frontmatter.otherContact}
-        address={post.frontmatter.address}
-        website={post.frontmatter.website}
-        featuredimage={post.frontmatter.featuredimage}
-        phone={post.frontmatter.phone}
-        hours={post.frontmatter.hours}
-        rules={post.frontmatter.rules}
-        support={post.frontmatter.support}
-        additionalInfo={post.frontmatter.additionalInfo}
+        // tags={post.frontmatter.tags}
+        // title={post.frontmatter.title}
+        // open={post.frontmatter.open}
+        // otherContact={post.frontmatter.otherContact}
+        // address={post.frontmatter.address}
+        // website={post.frontmatter.website}
+        // featuredimage={post.frontmatter.featuredimage}
+        // phone={post.frontmatter.phone}
+        // hours={post.frontmatter.hours}
+        // rules={post.frontmatter.rules}
+        // support={post.frontmatter.support}
+        // additionalInfo={post.frontmatter.additionalInfo}
       />
     </Layout>
   )
@@ -162,8 +163,8 @@ BusinessPost.propTypes = {
 export default BusinessPost
 
 export const pageQuery = graphql`
-  query BusinessPostByID($id: String!) {
-    contentfulBusiness(id: { eq: $id }) {
+  query BusinessPostByID($slug: String!) {
+    contentfulBusiness(slug: { eq: $slug }) {
       id
     }
   }
