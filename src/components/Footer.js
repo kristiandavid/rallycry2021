@@ -5,7 +5,7 @@ const Footer = class extends React.Component {
   render() {
     return (
       <footer className="footer has-background-black has-text-white-ter">
-        <div className="content has-text-centered has-background-black has-text-white-ter">
+        <div className="content has-background-black has-text-white-ter">
           <div className="container has-background-black has-text-white-ter">
             <div className="columns">
               <div className="column is-12">
@@ -33,6 +33,11 @@ const Footer = class extends React.Component {
                     </li>
                   </ul>
                 </section>
+              </div>
+            </div>
+            <div className="columns">
+              <div className="column is-12">
+                &copy;{new Date().getFullYear()} Rally Cry
               </div>
             </div>
           </div>

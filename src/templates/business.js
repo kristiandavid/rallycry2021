@@ -117,7 +117,7 @@ BusinessPostTemplate.propTypes = {
 }
 
 const BusinessPost = ({ data }) => {
-  const { markdownRemark: post } = data
+  // const { markdownRemark: post } = data
 
   return (
     <Layout>
