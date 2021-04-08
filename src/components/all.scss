@@ -289,7 +289,7 @@ $menu-label-color: $white-ter;
     grid-template-rows: auto 1fr;
     margin-bottom: 1.2rem;
 
-    img {
+    .businessImg {
       grid-column: 1/2;
       grid-row: 1/-1;
       margin: 0;

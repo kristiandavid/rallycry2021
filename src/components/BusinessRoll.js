@@ -23,11 +23,11 @@ class BusinessRoll extends React.Component {
                 <div className="post-meta">
                   <Link
                     className="title has-text-primary is-size-4"
-                    to={post.slug}
+                    to={`/business/${post.slug}`}
                   >
                     {post.name}
                   </Link>
-                  <div className="openBusiness">{post.openForBusiness === true ? (<div className="openYes">Open</div>) : (<div className="openNo">Closed</div>)}</div>
+                  <div className="openBusiness">{post.openForBusiness === true ? (<div className="openYes">Open: Modified Hours</div>) : (<div className="openNo">Closed</div>)}</div>
                 </div>
               </header>
                 <div>
@@ -43,7 +43,7 @@ class BusinessRoll extends React.Component {
                     </div>
                   ) : null}
                 </div>
-                <Link className="button" to={post.slug}>
+                <Link className="button" to={`/business/${post.slug}`}>
                   More Info →
                 </Link>
               </article>
