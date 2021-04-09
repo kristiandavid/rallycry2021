@@ -47,13 +47,4 @@ exports.createPages = async function ({ actions, graphql }) {
       context: { slug: slug },
     })
   });
-
-  // data.notHome.edges.forEach(edge => {
-  //   const slug = edge.node.slug
-  //   actions.createPage({
-  //     path: slug,
-  //     component: require.resolve(`./src/templates/page.js`),
-  //     context: { slug: slug },
-  //   })
-  // })
 }
