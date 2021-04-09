@@ -1,6 +1,8 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+// require("dotenv").config({
+//   path: `.env.${process.env.NODE_ENV}`,
+// });
+
+require('dotenv').config()
 
 // console.debug("process.env: ", process.env);
 const contentfulConfig = {
@@ -8,6 +10,9 @@ const contentfulConfig = {
   accessToken:
     process.env.CONTENTFUL_ACCESS_TOKEN
 };
+
+// console.debug("WTF: contentfulConfig: ", contentfulConfig);
+// console.debug("WTF: process.env: ", process.env);
 
 // If you want to use the preview API please define
 // CONTENTFUL_HOST and CONTENTFUL_PREVIEW_ACCESS_TOKEN in your
