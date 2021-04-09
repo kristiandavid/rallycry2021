@@ -19,6 +19,15 @@ exports.createPages = async function ({ actions, graphql }) {
           }
         }
       }
+      categories: allContentfulCategory {
+        edges {
+          node {
+            id
+            name
+            slug
+          }
+        }
+      }
     }
   `)
   data.businesses.edges.forEach(edge => {
@@ -30,12 +39,21 @@ exports.createPages = async function ({ actions, graphql }) {
     })
   });
 
-  data.notHome.edges.forEach(edge => {
+  data.categories.edges.forEach(edge => {
     const slug = edge.node.slug
     actions.createPage({
-      path: slug,
-      component: require.resolve(`./src/templates/page.js`),
+      path: `/category/${slug}`,
+      component: require.resolve(`./src/templates/category.js`),
       context: { slug: slug },
     })
-  })
+  });
+
+  // data.notHome.edges.forEach(edge => {
+  //   const slug = edge.node.slug
+  //   actions.createPage({
+  //     path: slug,
+  //     component: require.resolve(`./src/templates/page.js`),
+  //     context: { slug: slug },
+  //   })
+  // })
 }

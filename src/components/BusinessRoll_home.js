@@ -65,8 +65,8 @@ BusinessRoll.propTypes = {
 const staticQuery = () => {
   return <StaticQuery
     query={graphql`
-      query BusinessRollQuery {
-        allContentfulBusiness(sort: {fields: name, order: ASC}) {
+      query BusinessRollHomeQuery {
+        allContentfulBusiness(sort: {fields: publishDate, order: DESC}) {
           edges {
             node {
               id

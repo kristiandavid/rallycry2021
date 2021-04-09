@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { withPrefix } from 'gatsby'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
@@ -53,6 +54,8 @@ const BusinessPostTemplate = ({
         return null;
     }
   }
+
+  console.log("getImage(featuredImage): ", getImage(featuredImage))
 
 
   return (
@@ -194,7 +197,6 @@ BusinessPostTemplate.propTypes = {
 
 const BusinessPost = ({ data }) => {
   const { contentfulBusiness: post } = data
-  console.log("post: ", post)
 
   return (
     <Layout>
@@ -202,17 +204,36 @@ const BusinessPost = ({ data }) => {
         content="TODO content"
         description="TODO description"
         helmet={
-          <Helmet titleTemplate="%s | Rally Cry" defer={false}>
-            <title>{post.name}</title>
+          <Helmet defer={false}>
+            <link rel="canonical" href={`https://rallycry.ca/category/${post.slug}`} />
+            <meta
+              name="og:url"
+              content={`https://rallycry.ca/category/${post.slug}`}
+            />
+            <meta
+              name="og:image"
+              content={`${withPrefix('/')}img/og-image.jpg`}
+            />
+            <title>{post.name} | Rally Cry</title>
+            <meta
+              name="title"
+              content={`${post.name} | Rally Cry`}
+            />
+            <meta
+              name="og:title"
+              content={`${post.name} | Rally Cry`}
+            />
             <meta
               name="description"
               content={`${post.name} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
             />
-            <meta content="@kristiandavid" name="twitter:creator" />
+            <meta
+              name="og:description"
+              content={`${post.name} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+            />
             <meta content="summary" name="twitter:card" />
-            <meta content={post.name} name="twitter:title" />
+            <meta content={`${post.name} | Rally Cry`} name="twitter:title" />
             <meta content={`${post.name} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`} name="twitter:description" />
-            <meta content={post.featuredImage ? post.featuredImage.fluid.src : "/img/mstile-310x310"} name="twitter:image" />
           </Helmet>
         }
         // tags={post.frontmatter.tags}

@@ -2,9 +2,11 @@ import * as React from "react";
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Layout from "../components/Layout";
-import BusinessRoll from '../components/BusinessRoll';
+import Helmet from 'react-helmet'
+import BusinessRollHome from '../components/BusinessRoll_home';
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 import { options } from "../assets/richtext";
+import { withPrefix } from 'gatsby'
 
 import banner from '../../static/reflectionBG.jpg';
 
@@ -50,7 +52,7 @@ const IndexPageTemplate = ({
         >
           {homeTitle}
         </h1>
-        <h3
+        <h2
           className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
           style={{
             boxShadow:
@@ -62,7 +64,7 @@ const IndexPageTemplate = ({
           }}
         >
           {renderRichText(homeHeading)}
-        </h3>
+        </h2>
       </div>
     </div>
     <section className="section section--gradient" style={{ padding:0 }}>
@@ -82,7 +84,7 @@ const IndexPageTemplate = ({
                     <h2 className="has-text-weight-semibold">
                       Latest Businesses Updated
                     </h2>
-                    <BusinessRoll />
+                    <BusinessRollHome />
                     <div className="column is-12 has-text-centered indexAllBusinesses">
                       <Link className="btn" to="/businesses">
                         View all businesses
@@ -110,11 +112,41 @@ IndexPageTemplate.propTypes = {
 }
 
 const IndexPage = ({ data }) => {
-  console.log("data: ", data);
+  // console.log("data: ", data);
   const { contentfulPages } = data;
   const x = contentfulPages;
   return (
     <Layout>
+      <Helmet titleTemplate="Rally Cry | Support Small Businesses in Hamilton, ON" defer={false}>
+        <link rel="canonical" href="https://rallycry.ca/" />
+        <meta
+          name="title"
+          content={`Rally Cry | Support Small Businesses in Hamilton, ON`}
+        />
+        <meta
+          name="description"
+          content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+        />
+        <meta
+          name="og:title"
+          content={`Rally Cry | Support Small Businesses in Hamilton, ON`}
+        />
+        <meta
+          name="og:description"
+          content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+        />
+        <meta
+          name="og:url"
+          content={`https://rallycry.ca/`}
+        />
+        <meta
+          name="og:image"
+          content={`${withPrefix('/')}img/og-image.jpg`}
+        />
+        <meta content="summary" name="twitter:card" />
+        <meta content={`Rally Cry | Support Small Businesses in Hamilton, ON`} name="twitter:title" />
+        <meta content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`} name="twitter:description" />
+      </Helmet>
       <IndexPageTemplate
         id={x.id}
         content={x.content}

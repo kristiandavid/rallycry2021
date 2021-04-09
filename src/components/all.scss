@@ -54,9 +54,12 @@ $black: #2b2523;
   justify-content: left;
   align-items: center;
   li {
-    padding: 0 2rem 1rem 0;
-    margin-bottom: 1.5rem;
+    padding: 0 1rem 0 0;
+    margin-bottom: 0.5rem;
     margin-top: 0;
+    &::after {
+      content: " | "
+    }
   }
 }
 
@@ -97,8 +100,7 @@ $black: #2b2523;
     font-weight: 700;
     color: #A13639;
     text-align: center;
-    -webkit-box-shadow: inset 0 0 0 2px #A13639;
-    box-shadow: inset 0 0 0 2px #f40;
+    border: 2px solid #A13639;
     -webkit-transition: all .15s ease;
     transition: all .15s ease;
   }
@@ -226,6 +228,7 @@ $menu-label-color: $white-ter;
   font-size: 1.5rem;
   a {
     color: $tenon-red;
+    padding-right: rem(10)
   }
 }
 
@@ -373,4 +376,9 @@ $menu-label-color: $white-ter;
   &:hover {
     background-color: #000;
   }
+}
+
+.iframeForm {
+  width: 100%;
+  height: 100vh;
 }

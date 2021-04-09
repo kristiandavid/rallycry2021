@@ -14,6 +14,7 @@ const TemplateWrapper = ({ children }) => {
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        <link rel="canonical" href="https://rallycry.ca" />
 
         <link
           rel="apple-touch-icon"
@@ -41,12 +42,7 @@ const TemplateWrapper = ({ children }) => {
         <meta name="theme-color" content="#A13639" />
 
         <meta property="og:type" content="business.business" />
-        <meta property="og:title" content={title} />
-        <meta property="og:url" content="https://rallycry.ca" />
-        <meta
-          property="og:image"
-          content={`${withPrefix('/')}img/og-image.jpg`}
-        />
+        <meta content="/img/mstile-310x310" name="twitter:image" />
       </Helmet>
       <Navbar />
       <div>{children}</div>
