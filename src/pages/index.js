@@ -2,18 +2,24 @@ import * as React from "react";
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Layout from "../components/Layout";
-import banner from '../../static/reflectionBG.jpg'
+import Helmet from 'react-helmet'
+import BusinessRollHome from '../components/BusinessRoll_home';
+import { renderRichText } from "gatsby-source-contentful/rich-text";
+import { options } from "../assets/richtext";
+import { withPrefix } from 'gatsby'
+
+import banner from '../../static/reflectionBG.jpg';
 
 import * as styles from "./index.module.scss";
 
 const IndexPageTemplate = ({
-  image,
-  title,
-  heading,
-  description,
-  intro,
+  content,
+  homeHeading,
+  homeTitle,
+  slug,
+  title
 }) => (
-  <div className={styles.test}>
+  <div>
     <div
       className="full-width-image margin-top-0"
       style={{
@@ -44,9 +50,9 @@ const IndexPageTemplate = ({
             padding: '0.5em',
           }}
         >
-          (TODO title)
+          {homeTitle}
         </h1>
-        <h3
+        <h2
           className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
           style={{
             boxShadow:
@@ -57,8 +63,8 @@ const IndexPageTemplate = ({
             padding: '0.5em',
           }}
         >
-          (TODO heading)
-        </h3>
+          {renderRichText(homeHeading)}
+        </h2>
       </div>
     </div>
     <section className="section section--gradient" style={{ padding:0 }}>
@@ -67,27 +73,18 @@ const IndexPageTemplate = ({
           <div className="columns">
             <div className="column is-10 is-offset-1">
               <div className="content">
-
-                  <div className="content">
-                    <div className="tile">
-                      <h2 className="title">(TODO))</h2>
-                    </div>
-                    <div className="tile">
-                      <p style={{ fontSize: `1.2rem` }}>(TODO)</p>
-                    </div>
-                    <div className="tile">
-                      <p style={{ fontSize: `1.2rem`, display: `block`, marginTop: `1rem` }}>
-                        This site is very new, and we're trying to add as many businesses as quickly as possible. If you're a small business owner, please feel free to fill out <Link style={{ textDecoration: `underline`, color: `#A13639` }} to="/contact">this form</Link> and we'll be updating the site every 24 hours on average.
-                      </p>
-                    </div>
+                <div className="content">
+                  <div className={styles.contentText}>
+                    {renderRichText(content, options)}
                   </div>
+                </div>
 
                 <div className="columns">
                   <div className="column is-12">
                     <h2 className="has-text-weight-semibold">
                       Latest Businesses Updated
                     </h2>
-
+                    <BusinessRollHome />
                     <div className="column is-12 has-text-centered indexAllBusinesses">
                       <Link className="btn" to="/businesses">
                         View all businesses
@@ -105,24 +102,59 @@ const IndexPageTemplate = ({
 )
 
 IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-  }),
+  id: PropTypes.string,
+  content: PropTypes.object,
+  homeHeading: PropTypes.object,
+  homeTitle: PropTypes.string,
+  showInNav: PropTypes.bool,
+  slug: PropTypes.string,
+  title: PropTypes.string
 }
 
 const IndexPage = ({ data }) => {
+  // console.log("data: ", data);
+  const { contentfulPages } = data;
+  const x = contentfulPages;
   return (
     <Layout>
+      <Helmet titleTemplate="Rally Cry | Support Small Businesses in Hamilton, ON" defer={false}>
+        <link rel="canonical" href="https://rallycry.ca/" />
+        <meta
+          name="title"
+          content={`Rally Cry | Support Small Businesses in Hamilton, ON`}
+        />
+        <meta
+          name="description"
+          content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+        />
+        <meta
+          name="og:title"
+          content={`Rally Cry | Support Small Businesses in Hamilton, ON`}
+        />
+        <meta
+          name="og:description"
+          content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+        />
+        <meta
+          name="og:url"
+          content={`https://rallycry.ca/`}
+        />
+        <meta
+          name="og:image"
+          content={`${withPrefix('/')}img/og-image.jpg`}
+        />
+        <meta content="summary" name="twitter:card" />
+        <meta content={`Rally Cry | Support Small Businesses in Hamilton, ON`} name="twitter:title" />
+        <meta content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`} name="twitter:description" />
+      </Helmet>
       <IndexPageTemplate
-        image={data.image}
-        title={data.title}
-        heading={data.heading}
-        description={data.description}
-        intro={data.intro}
+        id={x.id}
+        content={x.content}
+        homeHeading={x.homeHeading}
+        homeTitle={x.homeTitle}
+        showInNav={x.showInNav}
+        slug={x.slug}
+        title={x.title}
       />
     </Layout>
   )
@@ -130,7 +162,7 @@ const IndexPage = ({ data }) => {
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
-    allContentfulPages: PropTypes.shape({
+    contentfulPages: PropTypes.shape({
       frontmatter: PropTypes.object,
     }),
   }),
@@ -140,16 +172,18 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    allContentfulPages(filter: {slug: {eq: "index"}}) {
-    edges {
-      node {
-        id
-        content {
-          raw
-        }
-        title
+    contentfulPages(slug: {eq: "index"}) {
+      id
+      content {
+        raw
       }
+      homeHeading {
+        raw
+      }
+      homeTitle
+      showInNav
+      slug
+      title
     }
-  }
   }
 `
