@@ -11,7 +11,7 @@ class BusinessRoll extends React.Component {
     return (
       <div className="grid">
         {posts &&
-          posts.slice(0,9).map(({ node: post }) => (
+          posts.map(({ node: post }) => (
             <div className="is-parent" key={post.id}>
               <article
                 className={`business-list-item tile is-child box notification gridBusinessRoll`}
