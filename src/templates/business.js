@@ -49,7 +49,7 @@ const BusinessPostTemplate = ({
       case 'twitter':
         return <>Twitter: <a href={link} target="_blank" rel="noopener noreferrer">@{acct}</a><br /></>;
       case 'facebook':
-        return <>Facebook: <a href={link} target="_blank" rel="noopener noreferrer">{link}</a><br /></>;
+        return <>Facebook: <a href={acct} target="_blank" rel="noopener noreferrer">{acct}</a><br /></>;
       default:
         return null;
     }
