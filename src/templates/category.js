@@ -91,7 +91,7 @@ const CatPost = ({ data }) => {
             />
             <meta
               name="og:image"
-              content={`${withPrefix('/')}img/og-image.jpg`}
+              content={`${withPrefix('/')}static/og-image.jpg`}
             />
             <title>{catName} | Rally Cry</title>
             <meta
