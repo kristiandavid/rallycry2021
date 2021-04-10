@@ -212,7 +212,7 @@ const BusinessPost = ({ data }) => {
             />
             <meta
               name="og:image"
-              content={`${withPrefix('/')}img/og-image.jpg`}
+              content={`${withPrefix('/')}static/og-image.jpg`}
             />
             <title>{post.name} | Rally Cry</title>
             <meta
