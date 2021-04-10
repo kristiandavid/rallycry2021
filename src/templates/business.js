@@ -76,7 +76,7 @@ const BusinessPostTemplate = ({
             <div className="col2">
               {address !== null ? (
                 <div className="businessTextSection">
-                  <h2>Other ways to get in touch</h2>
+                  <h2>Address</h2>
                   <div className="blog-post-content">
                     {address}
                     <div className="productMapLink"><a href={mapLink} target="_blank" rel="noopener noreferrer">View Map</a></div>
