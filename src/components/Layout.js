@@ -19,30 +19,30 @@ const TemplateWrapper = ({ children }) => {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href={`${withPrefix('/')}static/apple-touch-icon.png`}
+          href={`${withPrefix('/')}apple-touch-icon.png`}
         />
         <link
           rel="icon"
           type="image/png"
-          href={`${withPrefix('/')}static/favicon-32x32.png`}
+          href={`${withPrefix('/')}favicon-32x32.png`}
           sizes="32x32"
         />
         <link
           rel="icon"
           type="image/png"
-          href={`${withPrefix('/')}static/favicon-16x16.png`}
+          href={`${withPrefix('/')}favicon-16x16.png`}
           sizes="16x16"
         />
 
         <link
           rel="mask-icon"
-          href={`${withPrefix('/')}static/safari-pinned-tab.svg`}
+          href={`${withPrefix('/')}safari-pinned-tab.svg`}
           color="#A13639"
         />
         <meta name="theme-color" content="#A13639" />
 
         <meta property="og:type" content="business.business" />
-        <meta content="/static/mstile-310x310" name="twitter:image" />
+        <meta content={`${withPrefix('/')}mstile-310x310`} name="twitter:image" />
       </Helmet>
       <Navbar />
       <div>{children}</div>

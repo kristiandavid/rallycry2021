@@ -141,7 +141,7 @@ const IndexPage = ({ data }) => {
         />
         <meta
           name="og:image"
-          content={`${withPrefix('/')}static/og-image.jpg`}
+          content={`${withPrefix('/')}og-image.jpg`}
         />
         <meta content="summary" name="twitter:card" />
         <meta content={`Rally Cry | Support Small Businesses in Hamilton, ON`} name="twitter:title" />

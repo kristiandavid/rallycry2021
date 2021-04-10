@@ -33,7 +33,7 @@ const BusinessesPage = () => {
           />
           <meta
             name="og:image"
-            content={`${withPrefix('/')}static/og-image.jpg`}
+            content={`${withPrefix('/')}og-image.jpg`}
           />
           <meta content="summary" name="twitter:card" />
           <meta content={`Businesses | Rally Cry`} name="twitter:title" />

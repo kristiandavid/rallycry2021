@@ -32,7 +32,7 @@ const ContactPage = ({ data }) => {
       />
       <meta
         name="og:image"
-        content={`${withPrefix('/')}static/og-image.jpg`}
+        content={`${withPrefix('/')}og-image.jpg`}
       />
       <meta content="summary" name="twitter:card" />
       <meta content={`${title} | Rally Cry`} name="twitter:title" />
