@@ -11,7 +11,14 @@
         "name": "House Rogelstad",
         "price": 650000,
         "bedrooms": 3,
-        "bathrooms": 2
+        "bathrooms": 2,
+        "address": {
+         "street": "123 Bob St",
+         "city": "Calgary",
+         "province": "Alberta",
+         "postal": "T4C 9X9",
+         "country": "Canada"
+        }
       }
     },
     {
@@ -24,7 +31,14 @@
         "name": "Murray's",
         "price": 650000,
         "bedrooms": 3,
-        "bathrooms": 2
+        "bathrooms": 2,
+        "address": {
+         "street": "123 Bob St",
+         "city": "Calgary",
+         "province": "Alberta",
+         "postal": "T4C 9X9",
+         "country": "Canada"
+        }
       }
     },
     {
@@ -37,7 +51,14 @@
         "name": "Revolution Records",
         "price": 650000,
         "bedrooms": 3,
-        "bathrooms": 2
+        "bathrooms": 2,
+        "address": {
+         "street": "123 poops St",
+         "city": "Calgary",
+         "province": "Alberta",
+         "postal": "T4C 9X9",
+         "country": "Canada"
+        }
       }
     }
   ]

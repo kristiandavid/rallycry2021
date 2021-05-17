@@ -30,6 +30,25 @@ const Map = () => {
     })
   }
 
+  // Creating popups for the map
+  // Copy and paste before your return inside Map component
+  const createPopups = (feature = {}, layer) => {
+    const { properties = {} } = feature
+    const { address, price, bedrooms, bathrooms } = properties
+    const popup = L.popup()
+    const html = `
+      <div class="popup-container">
+      <h3 class="popup-header">${address.street}</h3>
+      <ul>
+      <li><strong>Price:</strong> ${price.toString()}</li>
+      <li><strong>Bedrooms:</strong> ${bedrooms.toString()}</li>
+      <li><strong>Bathrooms:</strong>${bathrooms.toString()}</li>
+      </div>
+      `
+    popup.setContent(html)
+    layer.bindPopup(popup)
+  }
+
   return (
     <>
       <MapContainer
@@ -47,7 +66,7 @@ const Map = () => {
             ref={clusterRef}
             iconCreateFunction={createClusters}
           >
-            <GeoJSON data={geojson} />
+            <GeoJSON data={geojson} onEachFeature={createPopups} />
           </MarkerClusterGroup>
         </FeatureGroup>
       </MapContainer>
