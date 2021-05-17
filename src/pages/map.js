@@ -1,4 +1,5 @@
 import React, { useRef } from "react"
+import { graphql, useStaticQuery } from 'gatsby'
 import { Helmet } from "react-helmet"
 import { MapContainer, TileLayer, GeoJSON, FeatureGroup } from "react-leaflet"
 import L from "leaflet"
@@ -50,6 +51,34 @@ const Map = () => {
     popup.setContent(html)
     layer.bindPopup(popup)
   }
+
+  const test = useStaticQuery(
+    graphql`
+      query mapLocations {
+        locationsQuery: allContentfulBusiness(sort: {fields: name, order: ASC}) {
+          edges {
+            node {
+              id
+              name
+              slug
+              featuredImage {
+                gatsbyImageData
+              }
+              openForBusiness
+              address
+              categories {
+                id
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+    `
+  )
+
+  console.log("test: ", test);
 
   return (
     <>
