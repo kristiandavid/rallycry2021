@@ -1,8 +1,8 @@
-// require("dotenv").config({
-//   path: `.env.${process.env.NODE_ENV}`,
-// });
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
-require('dotenv').config()
+// require('dotenv').config()
 
 // console.debug("process.env: ", process.env);
 const contentfulConfig = {
@@ -71,6 +71,7 @@ module.exports = {
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-react-leaflet",
     {
       resolve: "gatsby-plugin-manifest",
       options: {

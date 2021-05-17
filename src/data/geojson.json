@@ -1,0 +1,44 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.816177, 43.248882]
+      },
+      "properties": {
+        "name": "House Rogelstad",
+        "price": 650000,
+        "bedrooms": 3,
+        "bathrooms": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.817457, 43.247621]
+      },
+      "properties": {
+        "name": "Murray's",
+        "price": 650000,
+        "bedrooms": 3,
+        "bathrooms": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.817587, 43.247073]
+      },
+      "properties": {
+        "name": "Revolution Records",
+        "price": 650000,
+        "bedrooms": 3,
+        "bathrooms": 2
+      }
+    }
+  ]
+}
