@@ -1,8 +1,10 @@
 import React, { useRef } from "react"
+import { Helmet } from "react-helmet"
 import { MapContainer, TileLayer, GeoJSON, FeatureGroup } from "react-leaflet"
 import L from "leaflet"
 import MarkerClusterGroup from "react-leaflet-markercluster"
 import geojson from "../data/geojson.json"
+import AddLocate from "../lib/add-locate"
 import "react-leaflet-markercluster/dist/styles.min.css"
 import "../lib/map.css"
 
@@ -51,6 +53,12 @@ const Map = () => {
 
   return (
     <>
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+      </Helmet>
       <MapContainer
         center={[43.256531, -79.874420]}
         zoom={14}
@@ -69,6 +77,7 @@ const Map = () => {
             <GeoJSON data={geojson} onEachFeature={createPopups} />
           </MarkerClusterGroup>
         </FeatureGroup>
+        <AddLocate />
       </MapContainer>
     </>
   )
