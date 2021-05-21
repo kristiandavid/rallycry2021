@@ -10,7 +10,7 @@ const AddLocateLogic = () => {
   // Add locate control once the map loads
   useEffect(() => {
     const locateOptions = {
-      position: "bottomright",
+      position: "topleft",
       // Set other options in here for locate control
       // flyTo: true,
       // drawCircle: false,
