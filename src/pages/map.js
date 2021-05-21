@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet"
 import { MapContainer, TileLayer, GeoJSON, FeatureGroup } from "react-leaflet"
 import L from "leaflet"
 import MarkerClusterGroup from "react-leaflet-markercluster"
-import geojson from "../data/geojson.json"
 import AddLocate from "../lib/add-locate"
 import "react-leaflet-markercluster/dist/styles.min.css"
 import "../lib/map.css"
@@ -34,28 +33,31 @@ const Map = () => {
   }
 
   // Creating popups for the map
-  // Copy and paste before your return inside Map component
   const createPopups = (feature = {}, layer) => {
     const { properties = {} } = feature
-    const { address, price, bedrooms, bathrooms } = properties
+    const { name, address, slug, categories } = properties
     const popup = L.popup()
     const html = `
       <div class="popup-container">
-      <h3 class="popup-header">${address.street}</h3>
-      <ul>
-      <li><strong>Price:</strong> ${price.toString()}</li>
-      <li><strong>Bedrooms:</strong> ${bedrooms.toString()}</li>
-      <li><strong>Bathrooms:</strong>${bathrooms.toString()}</li>
+        <h3 class="popup-header">${name}</h3>
+        <h4 class="popup-subheader">${address}</h4>
+        <ul class="popup-cats">
+          ${categories.map(cat => {
+            return `<li><a href="/category/${cat.slug}">${cat.name}</a>`
+          }).join('')}
+        </ul>
+        <div class="popup-moreInfo"><a href="business/${slug}">More info</a></div>
       </div>
       `
     popup.setContent(html)
     layer.bindPopup(popup)
   }
 
-  const test = useStaticQuery(
+  // Get locations from Contentful
+  const allLocations = useStaticQuery(
     graphql`
-      query mapLocations {
-        locationsQuery: allContentfulBusiness(sort: {fields: name, order: ASC}) {
+      query {
+        allContentfulBusiness(sort: {fields: name, order: ASC}) {
           edges {
             node {
               id
@@ -66,6 +68,10 @@ const Map = () => {
               }
               openForBusiness
               address
+              coordinates {
+                lat
+                lon
+              }
               categories {
                 id
                 name
@@ -76,9 +82,33 @@ const Map = () => {
         }
       }
     `
-  )
+  );
 
-  console.log("test: ", test);
+  const edges = allLocations.allContentfulBusiness.edges;
+
+  const result = edges.map(edge => {
+    const { name, address, slug, categories } = edge.node;
+    return {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [edge.node.coordinates.lon, edge.node.coordinates.lat]
+      },
+      "properties": {
+        name,
+        address,
+        slug,
+        categories
+      }
+    }
+  });
+
+  const geodata = (result) => {
+    return {
+      "type": "FeatureCollection",
+      "features": result
+    }
+  }
 
   return (
     <>
@@ -103,7 +133,7 @@ const Map = () => {
             ref={clusterRef}
             iconCreateFunction={createClusters}
           >
-            <GeoJSON data={geojson} onEachFeature={createPopups} />
+            <GeoJSON data={geodata(result)} onEachFeature={createPopups} />
           </MarkerClusterGroup>
         </FeatureGroup>
         <AddLocate />

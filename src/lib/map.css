@@ -8,24 +8,56 @@
 /* POPUPS */
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
-  background-color: rgb(135, 140, 146);
+  background-color: #fff;
 }
 
 .popup-container {
   font-size: 14px;
   font-family: "Helvetica", sans-serif;
-  background-color: rgb(135, 140, 146);
+  background-color: #fff;
 }
 
 .popup-header {
   font-size: 1.2em;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.2em;
+  font-weight: bold;
+}
+
+.popup-subheader {
+  font-size: 1em;
+  margin-bottom: 0.2em;
+}
+
+.popup-cats {
+    margin-top: 0.4em
+}
+
+.popup-cats li {
+  display: inline-block;
+}
+
+.popup-cats li:last-of-type::after {
+  content: "";
+}
+
+.popup-cats li::after {
+  content: "|";
+  padding: 0 5px;
+}
+
+
+.popup-container a {
+  color: #8E312F;
+}
+
+.popup-container a:hover {
+  text-decoration: underline;
 }
 
 .popup-container ul {
   padding: 0;
   list-style: none;
-  margin: 0;
+  line-height: 15px
 }
 
 .popup-container li {
@@ -34,6 +66,10 @@
 
 .popup-container li:last-child {
   margin-bottom: 0;
+}
+
+.popup-moreInfo {
+  margin-top: 15px;
 }
 
 /* MARKER CLUSTERS */
