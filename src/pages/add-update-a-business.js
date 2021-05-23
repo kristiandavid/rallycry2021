@@ -41,7 +41,7 @@ const AddBusinessPage = ({ data }) => {
       <section className="section">
         <div className="container">
           <div className="content">
-            <iframe title="Add/Update a Business Form" src="https://docs.google.com/forms/d/e/1FAIpQLSfoG1dR9R0o2qQDQyqOFbh54K3a83rbNK-dmcZXwsUJyu0ZpA/viewform?embedded=true" className="iframeForm" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <iframe title="Add/Update a Business Form" src="https://docs.google.com/forms/d/e/1FAIpQLSfoG1dR9R0o2qQDQyqOFbh54K3a83rbNK-dmcZXwsUJyu0ZpA/viewform?embedded=true" className="iframeForm" width="700" height="520" frameBorder="0" marginHeight="0" marginWidth="0">Loading…</iframe>
           </div>
         </div>
       </section>

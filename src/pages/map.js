@@ -8,6 +8,7 @@ import MarkerClusterGroup from "react-leaflet-markercluster"
 import AddLocate from "../lib/add-locate"
 import "react-leaflet-markercluster/dist/styles.min.css"
 import "../lib/map.css"
+import useHasMounted from "../hooks/useHasMounted"
 
 const Map = () => {
   // REFS
@@ -120,26 +121,28 @@ const Map = () => {
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         />
       </Helmet>
-      <MapContainer
-        center={[43.251705,-79.830643]}
-        zoom={14}
-        style={{ height: "94vh" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+      {useHasMounted && (
+        <MapContainer
+          center={[43.251705,-79.830643]}
+          zoom={14}
+          style={{ height: "94vh" }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
 
-        <FeatureGroup ref={groupRef} name="Homes">
-          <MarkerClusterGroup
-            ref={clusterRef}
-            iconCreateFunction={createClusters}
-          >
-            <GeoJSON data={geodata(result)} onEachFeature={createPopups} />
-          </MarkerClusterGroup>
-        </FeatureGroup>
-        <AddLocate />
-      </MapContainer>
+          <FeatureGroup ref={groupRef} name="Homes">
+            <MarkerClusterGroup
+              ref={clusterRef}
+              iconCreateFunction={createClusters}
+            >
+              <GeoJSON data={geodata(result)} onEachFeature={createPopups} />
+            </MarkerClusterGroup>
+          </FeatureGroup>
+          <AddLocate />
+        </MapContainer>
+      )}
     </Layout>
   )
 }

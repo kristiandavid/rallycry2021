@@ -1,8 +1,8 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+// require("dotenv").config({
+//   path: `.env.${process.env.NODE_ENV}`,
+// });
 
-// require('dotenv').config()
+require('dotenv').config()
 
 // console.debug("process.env: ", process.env);
 const contentfulConfig = {
@@ -40,6 +40,9 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  flags: {
+    DEV_SSR: true
+  },
   siteMetadata: {
     title: `Rally Cry | Support Small Businesses in Hamilton, ON`,
     titleTemplate: "%s | Rally Cry",
