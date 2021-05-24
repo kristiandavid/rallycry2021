@@ -329,6 +329,10 @@ $menu-label-color: $white-ter;
     margin-bottom: 0;
   }
 }
+.map,
+.map-base {
+  height: 94vh
+}
 
 .productMapLink {
   display: block;

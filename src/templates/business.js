@@ -55,9 +55,6 @@ const BusinessPostTemplate = ({
     }
   }
 
-  console.log("getImage(featuredImage): ", getImage(featuredImage))
-
-
   return (
     <section className="section">
       {helmet || ''}

@@ -112,7 +112,6 @@ IndexPageTemplate.propTypes = {
 }
 
 const IndexPage = ({ data }) => {
-  // console.log("data: ", data);
   const { contentfulPages } = data;
   const x = contentfulPages;
   return (

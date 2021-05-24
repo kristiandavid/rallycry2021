@@ -1,17 +1,19 @@
 import * as React from "react"
-// import { Link } from "gatsby"
 import Layout from "../components/Layout";
 
 // markup
 const NotFoundPage = () => {
   return (
-      <Layout>
-        <div>
-
-        OOPS!
-
+    <Layout>
+      <section className="section">
+        <div className="container">
+          <div className="content">
+            What did you do?!<br />
+            Looks like this page doesn't exist. Try another in the main menu.
           </div>
-      </Layout>
+        </div>
+      </section>
+    </Layout>
   )
 }
 

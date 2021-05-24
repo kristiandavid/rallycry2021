@@ -4,15 +4,11 @@
 
 require('dotenv').config()
 
-// console.debug("process.env: ", process.env);
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken:
     process.env.CONTENTFUL_ACCESS_TOKEN
 };
-
-// console.debug("WTF: contentfulConfig: ", contentfulConfig);
-// console.debug("WTF: process.env: ", process.env);
 
 // If you want to use the preview API please define
 // CONTENTFUL_HOST and CONTENTFUL_PREVIEW_ACCESS_TOKEN in your
@@ -40,6 +36,9 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  flags: {
+    DEV_SSR: true
+  },
   siteMetadata: {
     title: `Rally Cry | Support Small Businesses in Hamilton, ON`,
     titleTemplate: "%s | Rally Cry",
@@ -77,6 +76,7 @@ module.exports = {
         icon: "src/images/icon152.png",
       },
     },
+    "gatsby-plugin-react-leaflet",
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -95,6 +95,6 @@ module.exports = {
         path: "./src/pages/",
       },
       __key: "pages",
-    },
+    }
   ],
 };

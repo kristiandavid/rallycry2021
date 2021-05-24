@@ -9,14 +9,14 @@ const ContactPage = ({ data }) => {
   return (
     <Layout>
     <Helmet title={`Categories | ${title}`}>
-      <link rel="canonical" href="https://rallycry.ca/add-update-a-business" />
+      <link rel="canonical" href="https://rallycry.ca/contact" />
       <meta
         name="title"
         content={`${title} | Rally Cry`}
       />
       <meta
         name="description"
-        content={`Add a new listing or update an existing one. ${description}`}
+        content={`Contact us at Rally Cry. ${description}`}
       />
       <meta
         name="og:title"
@@ -24,11 +24,11 @@ const ContactPage = ({ data }) => {
       />
       <meta
         name="og:description"
-        content={`Add a new listing or update an existing one. ${description}`}
+        content={`Contact us at Rally Cry. ${description}`}
       />
       <meta
         name="og:url"
-        content={`https://rallycry.ca/add-update-a-business`}
+        content={`https://rallycry.ca/contact`}
       />
       <meta
         name="og:image"
@@ -36,7 +36,7 @@ const ContactPage = ({ data }) => {
       />
       <meta content="summary" name="twitter:card" />
       <meta content={`${title} | Rally Cry`} name="twitter:title" />
-      <meta content={`Add a new listing or update an existing one. ${description}`} name="twitter:description" />
+      <meta content={`Contact us at Rally Cry. ${description}`} name="twitter:description" />
     </Helmet>
       <section className="section">
         <div className="container">
