@@ -40,6 +40,9 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  flags: {
+    DEV_SSR: true
+  },
   siteMetadata: {
     title: `Rally Cry | Support Small Businesses in Hamilton, ON`,
     titleTemplate: "%s | Rally Cry",
@@ -71,6 +74,7 @@ module.exports = {
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-react-leaflet",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
