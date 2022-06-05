@@ -36,7 +36,8 @@ const CatPostTemplate = ({
                       >
                         {post.name}
                       </Link>
-                      <div className="openBusiness">{post.openForBusiness === true ? (<div className="openYes">Open: Modified Hours</div>) : (<div className="openNo">Closed</div>)}</div>
+                      <p className='tagline'>{post.tagline}</p>
+                      {/* <div className="openBusiness">{post.openForBusiness === true ? (<div className="openYes">Open: Modified Hours</div>) : (<div className="openNo">Closed</div>)}</div> */}
                     </div>
                   </header>
                     <div>
@@ -145,7 +146,7 @@ export const pageQuery = graphql`
           node {
             id
             name
-            openForBusiness
+            tagline
             slug
             featuredImage {
               gatsbyImageData
