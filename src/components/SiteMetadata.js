@@ -8,11 +8,13 @@ const useSiteMetadata = () => {
           siteMetadata {
             title
             description
+            siteURL
           }
         }
       }
     `
   )
+
   return site.siteMetadata
 }
 
