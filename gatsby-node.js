@@ -1,9 +1,9 @@
-const Promise = require('bluebird')
-const path = require('path')
+const path = require("path")
 
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions
 
-exports.createPages = async function ({ actions, graphql }) {
-  const { data } = await graphql(`
+  return graphql(`
     query {
       businesses: allContentfulBusiness {
         edges {
@@ -29,22 +29,29 @@ exports.createPages = async function ({ actions, graphql }) {
         }
       }
     }
-  `)
-  data.businesses.edges.forEach(edge => {
-    const slug = edge.node.slug
-    actions.createPage({
-      path: `/business/${slug}`,
-      component: require.resolve(`./src/templates/business.js`),
-      context: { slug: slug },
-    })
-  });
+  `).then(result => {
+    if (result.errors) {
+      result.errors.forEach(e => console.error(e.toString()))
+      return Promise.reject(result.errors)
+    }
 
-  data.categories.edges.forEach(edge => {
-    const slug = edge.node.slug
-    actions.createPage({
-      path: `/category/${slug}`,
-      component: require.resolve(`./src/templates/category.js`),
-      context: { slug: slug },
-    })
-  });
+  
+    result.data.businesses.edges.forEach(edge => {
+      const slug = edge.node.slug
+      createPage({
+        path: `/business/${slug}`,
+        component: path.resolve(`./src/templates/business.js`),
+        context: { slug: slug },
+      })
+    });
+
+    result.data.categories.edges.forEach(edge => {
+      const slug = edge.node.slug
+      createPage({
+        path: `/category/${slug}`,
+        component: path.resolve(`./src/templates/category.js`),
+        context: { slug: slug },
+      })
+    });
+  })
 }

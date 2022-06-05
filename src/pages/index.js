@@ -8,7 +8,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text";
 import { options } from "../assets/richtext";
 import { withPrefix } from 'gatsby'
 
-import banner from '../../static/reflectionBG.jpg';
+import banner from '../../static/hammerBanner.jpg';
 
 import * as styles from "./index.module.scss";
 
@@ -28,6 +28,7 @@ const IndexPageTemplate = ({
         backgroundSize: `cover`,
         marginBottom: `20px`
       }}
+      aria-label="This lovely photo was taken by Ahmed Abbas. https://unsplash.com/@ahmed12abbas"
     >
       <div
         style={{
@@ -125,7 +126,7 @@ const IndexPage = ({ data }) => {
         />
         <meta
           name="description"
-          content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+          content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that could use your support.`}
         />
         <meta
           name="og:title"
@@ -133,7 +134,7 @@ const IndexPage = ({ data }) => {
         />
         <meta
           name="og:description"
-          content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+          content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that could use your support.`}
         />
         <meta
           name="og:url"
@@ -145,7 +146,7 @@ const IndexPage = ({ data }) => {
         />
         <meta content="summary" name="twitter:card" />
         <meta content={`Rally Cry | Support Small Businesses in Hamilton, ON`} name="twitter:title" />
-        <meta content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`} name="twitter:description" />
+        <meta content={`Rally Cry is a listing of small businesses in Hamilton, Ontario that could use your support.`} name="twitter:description" />
       </Helmet>
       <IndexPageTemplate
         id={x.id}

@@ -6,13 +6,13 @@ import { withPrefix } from 'gatsby'
 
 const CategoriesPage = ({ data }) => {
   const { edges: cats } = data.allContentfulCategory
-  const { site: {siteMetadata: { title, description }} } = data
+  const { site: {siteMetadata: { title, description, siteURL }} } = data
 
   return (
     <Layout>
       <section className="section">
       <Helmet title={`Categories | ${title}`}>
-        <link rel="canonical" href="https://rallycry.ca/categories" />
+        <link rel="canonical" href={`${siteURL}/categories`} />
         <meta
           name="title"
           content={`${title} | Rally Cry`}
@@ -73,6 +73,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         description
+        siteURL
       }
     }
     allContentfulCategory(sort: {fields: name, order: ASC}) {

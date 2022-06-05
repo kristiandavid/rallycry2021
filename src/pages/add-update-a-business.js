@@ -5,11 +5,11 @@ import Helmet from 'react-helmet'
 import { withPrefix } from 'gatsby'
 
 const AddBusinessPage = ({ data }) => {
-  const { site: {siteMetadata: { title, description }} } = data
+  const { site: {siteMetadata: { title, description, siteURL }} } = data
   return (
     <Layout>
       <Helmet title={`Categories | ${title}`}>
-        <link rel="canonical" href="https://rallycry.ca/add-update-a-business" />
+        <link rel="canonical" href={`${siteURL}/add-update-a-business`} />
         <meta
           name="title"
           content={`${title} | Rally Cry`}
@@ -57,6 +57,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         description
+        siteURL
       }
     }
     contentfulPages(slug: {eq: "add-update-a-business"}) {
