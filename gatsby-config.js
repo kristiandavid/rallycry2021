@@ -43,12 +43,21 @@ module.exports = {
   siteMetadata: {
     title: `Rally Cry | Support Small Businesses in Hamilton, ON`,
     titleTemplate: "%s | Rally Cry",
-    description: `Rally Cry is a listing of small businesses in Hamilton that could use your
-    support through this COVID-19 pandemic, and beyond.`,
+    description: `Rally Cry is a listing of small businesses in Hamilton that could use your support.`,
     siteURL: "https://www.rallycry.ca", // No trailing slash allowed!
     author: `@kristiandavid`
   },
   plugins: [
+    `@contentful/rich-text-types`,
+    `@contentful/rich-text-react-renderer`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        defaultQuality: 75,
+      },
+    },
     {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig,
@@ -77,8 +86,7 @@ module.exports = {
         icon: "src/images/icon152.png",
       },
     },
-    "gatsby-plugin-mdx",
-    "gatsby-plugin-sharp",
+    `gatsby-plugin-sitemap`,
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",

@@ -33,11 +33,16 @@ const BusinessPostTemplate = ({
   socialFacebook,
   socialInstagram,
   socialTwitter,
+  tagline,
+  updatedAt,
   visible,
   website
 }) => {
   const mapLink = `https://www.google.com/maps/place/${address}`
   const phoneLink = `tel:${phoneNumber}`
+
+  console.log("updatedAt::::::: ", updatedAt);
+  console.log("website::::::: ", website);
 
   function socialLink(type, acct) {
     const link = type === "email" ? `mailto:${acct}` : `https://www.${type}.com/${acct}`;
@@ -55,9 +60,6 @@ const BusinessPostTemplate = ({
     }
   }
 
-  console.log("getImage(featuredImage): ", getImage(featuredImage))
-
-
   return (
     <section className="section">
       {helmet || ''}
@@ -70,13 +72,14 @@ const BusinessPostTemplate = ({
               <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
                 {name}
               </h1>
-              <div className="openBusiness">{openForBusiness === true ? (<div className="openYes">Open: Modified Hours</div>) : (<div className="openNo">Closed</div>)}</div>
+              <h2 className="title is-size-4 has-text-weight-bold is-bold-light mb-0">{tagline}</h2>
+              {/* <div className="openBusiness">{openForBusiness === true ? (<div className="openYes">Open</div>) : (<div className="openNo">Closed</div>)}</div> */}
             </div>
 
             <div className="col2">
               {address !== null ? (
                 <div className="businessTextSection">
-                  <h2>Address</h2>
+                  <h3>Address</h3>
                   <div className="blog-post-content">
                     {address}
                     <div className="productMapLink"><a href={mapLink} target="_blank" rel="noopener noreferrer">View Map</a></div>
@@ -84,19 +87,19 @@ const BusinessPostTemplate = ({
                 </div>
               ) : null}
               {website !== null ? (
-                <div className="businessTextSection"><h2>Website</h2>
+                <div className="businessTextSection"><h3>Website</h3>
                   <a href={website} target="_blank" rel="noopener noreferrer">{website}</a>
                 </div>
                 ) : null}
               {phoneNumber !== null ? (
-                <div className="businessTextSection"><h2>Phone</h2>
+                <div className="businessTextSection"><h3>Phone</h3>
                   <a href={phoneLink}>{phoneNumber}</a>
                 </div>
                 ) : null}
 
                 {(email !== null || socialFacebook !== null || socialInstagram !== null || socialTwitter !== null) ? (
                   <div className="businessTextSection">
-                    <h2>Other ways to get in touch</h2>
+                    <h3>Other ways to get in touch</h3>
                     <div className="blog-post-content">
                       {email && socialLink("email", email)}
                       {socialInstagram && socialLink("instagram", socialInstagram)}
@@ -110,7 +113,7 @@ const BusinessPostTemplate = ({
 
             <div className="col3">
               <div className="businessTextSection">
-                <h2>Hours</h2>
+                <h3>Hours</h3>
                 {openForBusiness && (
                   <div className="blog-post-content">
                     <strong>Monday:</strong> {hoursMonday ? hoursMonday : "Closed"}<br />
@@ -126,21 +129,21 @@ const BusinessPostTemplate = ({
 
               {rules !== null ? (
                 <div className="businessTextSection">
-                  <h2>Rules to follow when visiting</h2>
+                  <h3>Rules to follow when visiting</h3>
                   {renderRichText(rules, options)}
                 </div>
               ) : null}
 
               {otherWaysToSupport !== null ? (
                 <div className="businessTextSection">
-                  <h2>Other ways you can support us</h2>
+                  <h3>Other ways you can support us</h3>
                   {renderRichText(otherWaysToSupport, options)}
                 </div>
               ) : null}
 
               {additionalInfo !== null ? (
                 <div className="businessTextSection">
-                  <h2>Additional Info</h2>
+                  <h3>Additional Info</h3>
                   {renderRichText(additionalInfo, options)}
                 </div>
               ) : null}
@@ -152,8 +155,7 @@ const BusinessPostTemplate = ({
                 <ul className="taglist">
                   {tags.map(tag => (
                     <li key={tag + `tag`}>
-                      <Link to={`/tags/${tag
-                       }/`}>{tag}</Link>
+                      <Link to={`/tags/${tag}/`}>{tag}</Link>
                     </li>
                   ))}
                 </ul>
@@ -161,6 +163,7 @@ const BusinessPostTemplate = ({
             ) : null}
           </div>
         </div>
+        <div className="updatedDate">{`This listing last updated: ${new Date(updatedAt).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"long", day:"numeric"})}`}</div>
       </div>
     </section>
   )
@@ -185,6 +188,8 @@ BusinessPostTemplate.propTypes = {
   socialFacebook:PropTypes.string,
   socialInstagram:PropTypes.string,
   socialTwitter:PropTypes.string,
+  tagline:PropTypes.string,
+  updatedAt:PropTypes.string,
   website:PropTypes.string,
   featuredImage:PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   phoneNumber:PropTypes.string,
@@ -197,6 +202,8 @@ BusinessPostTemplate.propTypes = {
 
 const BusinessPost = ({ data }) => {
   const { contentfulBusiness: post } = data
+
+  
 
   return (
     <Layout>
@@ -225,15 +232,15 @@ const BusinessPost = ({ data }) => {
             />
             <meta
               name="description"
-              content={`${post.name} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+              content={`${post.name} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support.`}
             />
             <meta
               name="og:description"
-              content={`${post.name} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+              content={`${post.name} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support.`}
             />
             <meta content="summary" name="twitter:card" />
             <meta content={`${post.name} | Rally Cry`} name="twitter:title" />
-            <meta content={`${post.name} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`} name="twitter:description" />
+            <meta content={`${post.name} on Rally Cry. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support.`} name="twitter:description" />
           </Helmet>
         }
         // tags={post.frontmatter.tags}
@@ -255,6 +262,8 @@ const BusinessPost = ({ data }) => {
         socialFacebook={post.socialFacebook}
         socialInstagram={post.socialInstagram}
         socialTwitter={post.socialTwitter}
+        tagline={post.tagline}
+        updatedAt={post.updatedAt}
         rules={post.rules}
         otherWaysToSupport={post.otherWaysToSupport}
         additionalInfo={post.additionalInfo}
@@ -284,9 +293,7 @@ export const pageQuery = graphql`
       email
       featuredImage {
         gatsbyImageData(width: 100, placeholder: DOMINANT_COLOR)
-        fluid {
-          src
-        }
+        url
         title
       }
       hoursFriday
@@ -309,6 +316,8 @@ export const pageQuery = graphql`
       socialFacebook
       socialInstagram
       socialTwitter
+      tagline
+      updatedAt
       visible
       website
       additionalInfo {

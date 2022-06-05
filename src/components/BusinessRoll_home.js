@@ -66,7 +66,7 @@ const staticQuery = () => {
   return <StaticQuery
     query={graphql`
       query BusinessRollHomeQuery {
-        allContentfulBusiness(sort: {fields: publishDate, order: DESC}) {
+        allContentfulBusiness(sort: {fields: updatedAt, order: DESC}) {
           edges {
             node {
               id

@@ -17,7 +17,7 @@ const BusinessesPage = () => {
           />
           <meta
             name="description"
-            content={`The complete list of small businesses we have on the site so far. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+            content={`The complete list of small businesses we have on the site so far. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support.`}
           />
           <meta
             name="og:title"
@@ -25,7 +25,7 @@ const BusinessesPage = () => {
           />
           <meta
             name="og:description"
-            content={`The complete list of small businesses we have on the site so far. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19.`}
+            content={`The complete list of small businesses we have on the site so far. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support.`}
           />
           <meta
             name="og:url"
@@ -37,7 +37,7 @@ const BusinessesPage = () => {
           />
           <meta content="summary" name="twitter:card" />
           <meta content={`Businesses | Rally Cry`} name="twitter:title" />
-          <meta content={`The complete list of small businesses we have on the site so far. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support through COVID-19."`} name="twitter:description" />
+          <meta content={`The complete list of small businesses we have on the site so far. Rally Cry is a listing of small businesses in Hamilton, Ontario that you can support."`} name="twitter:description" />
         </Helmet>
         <div className="container">
           <h1
