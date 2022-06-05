@@ -27,7 +27,8 @@ class BusinessRoll extends React.Component {
                   >
                     {post.name}
                   </Link>
-                  <div className="openBusiness">{post.openForBusiness === true ? (<div className="openYes">Open: Modified Hours</div>) : (<div className="openNo">Closed</div>)}</div>
+                  <p className='tagline'>{post.tagline}</p>
+                  {/* <div className="openBusiness">{post.openForBusiness === true ? (<div className="openYes">Open</div>) : (<div className="openNo">Closed</div>)}</div> */}
                 </div>
               </header>
                 <div>
@@ -81,7 +82,7 @@ const staticQuery = () => {
                 gatsbyImageData(placeholder: DOMINANT_COLOR)
               }
               slug
-              openForBusiness
+              tagline
             }
           }
         }
