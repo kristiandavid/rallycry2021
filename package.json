@@ -15,8 +15,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@contentful/rich-text-types": "^15.12.1",
     "@contentful/rich-text-react-renderer": "15.12.1",
+    "@contentful/rich-text-types": "^15.12.1",
     "bulma": "^0.9.4",
     "gatsby": "^4.15.2",
     "gatsby-image": "^3.11.0",
@@ -28,14 +28,17 @@
     "gatsby-plugin-mdx": "^3.15.2",
     "gatsby-plugin-postcss": "^5.13.0",
     "gatsby-plugin-react-helmet": "^5.15.0",
+    "gatsby-plugin-react-leaflet": "^3.0.3",
     "gatsby-plugin-sass": "^5.15.1",
     "gatsby-plugin-sharp": "^4.15.1",
     "gatsby-source-contentful": "^7.13.1",
     "gatsby-source-filesystem": "^4.15.0",
     "gatsby-transformer-sharp": "^4.15.1",
+    "leaflet": "^1.8.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
+    "react-leaflet": "^4.0.0",
     "sass": "^1.52.2"
   },
   "devDependencies": {
